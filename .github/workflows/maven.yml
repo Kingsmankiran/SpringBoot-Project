@@ -39,9 +39,9 @@ jobs:
       - name: Build & push Docker image
         uses: mr-smithers-excellent/docker-build-push@v6
         with:
-          image: repo/image
-          tags: v1, latest
-          registry: registry-url.io
-          dockerfile: Dockerfile.ci
+          image: kingsmankiran/springboot-image
+          tags: latest
+          registry: docker.io
+          dockerfile: Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}

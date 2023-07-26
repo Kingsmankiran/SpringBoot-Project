@@ -35,6 +35,12 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+      - name: making jar file to save
+        run: mkdir staging && cp target/*.jar staging
+        uses: actions/upload-artifact@v3
+        with:
+          name: package
+          path: staging
       # pushing image to the docker hub
       - name: Build & push Docker image
         uses: mr-smithers-excellent/docker-build-push@v6
